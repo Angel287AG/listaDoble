@@ -10,81 +10,81 @@ import java.util.Scanner;
  */  
 public class Main {
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         listaDoble lista = new listaDoble();
         int opcion;
 
         do {
-            System.out.println("\n===== MENÚ LISTA DOBLE =====");
-            System.out.println("1. Insertar al inicio");
-            System.out.println("2. Insertar al final");
-            System.out.println("3. Insertar en posición");
-            System.out.println("4. Insertar ordenado");
-            System.out.println("5. Eliminar por valor");
-            System.out.println("6. Eliminar en posición");
-            System.out.println("7. Eliminar último");
-            System.out.println("8. Mostrar adelante");
-            System.out.println("9. Mostrar atrás");
-            System.out.println("10. Ver tamaño");
+            System.out.println("\n===== MENU LISTA DOBLE =====");
+            System.out.println("1. Insertar ordenado");
+            System.out.println("2. Insertar al inicio");
+            System.out.println("3. Insertar al final");
+            System.out.println("4. Insertar en posicion");
+            System.out.println("5. Buscar valor");
+            System.out.println("6. Eliminar por valor");
+            System.out.println("7. Eliminar en posicion");
+            System.out.println("8. Eliminar ultimo");
+            System.out.println("9. Mostrar lista");
+            System.out.println("10. Ver tamanio");
             System.out.println("0. Salir");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
             opcion = teclado.nextInt();
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Valor: ");
-                    lista.insertarInicio(teclado.nextInt());
+                    System.out.print("Dato: ");
+                    lista.insertarOrdenado(teclado.nextInt());
+                    lista.mostrar();
                     break;
                 case 2:
-                    System.out.print("Valor: ");
-                    lista.insertarFinal(teclado.nextInt());
+                    System.out.print("Dato: ");
+                    lista.insertarInicio(teclado.nextInt());
+                    lista.mostrar();
                     break;
                 case 3:
-                    System.out.print("Posición: ");
-                    int posIns = teclado.nextInt();
-                    System.out.print("Valor: ");
-                    int valIns = teclado.nextInt();
-                    lista.insertarEnPosicion(posIns, valIns);
+                    System.out.print("Dato: ");
+                    lista.insertarFinal(teclado.nextInt());
+                    lista.mostrar();
                     break;
                 case 4:
-                    System.out.print("Valor a insertar ordenado: ");
-                    lista.insertarOrdenado(teclado.nextInt());
+                    System.out.print("Posici0n: ");
+                    int posIns = teclado.nextInt();
+                    System.out.print("Dato: ");
+                    int datoIns = teclado.nextInt();
+                    lista.insertarEnPosicion(posIns, datoIns);
+                    lista.mostrar();
                     break;
                 case 5:
-                    System.out.print("Valor a eliminar: ");
-                    int x = teclado.nextInt();
-                    System.out.println(lista.eliminarPorValor(x)
-                            ? "Eliminado"
-                            : "No encontrado");
+                    System.out.print("Valor a buscar: ");
+                    System.out.println(lista.buscar(teclado.nextInt()) ? "Encontrado" : "No encontrado");
                     break;
                 case 6:
-                    System.out.print("Posición a eliminar: ");
-                    int posElim = teclado.nextInt();
-                    int eliminadoPos = lista.eliminarEnPosicion(posElim);
-                    if (eliminadoPos != -1) {
-                        System.out.println("Elemento eliminado: " + eliminadoPos);
-                    }
+                    System.out.print("Valor a eliminar: ");
+                    System.out.println(lista.eliminarPorValor(teclado.nextInt()) ? "Eliminado" : "No encontrado");
+                    lista.mostrar();
                     break;
                 case 7:
-                    System.out.println(lista.eliminarUltimo()
-                            ? "Último elemento eliminado"
-                            : "La lista está vacía");
+                    System.out.print("Posicion a eliminar: ");
+                    int eliminadoPos = lista.eliminarEnPosicion(teclado.nextInt());
+                    System.out.println(eliminadoPos != -1 ? "Eliminado: " + eliminadoPos : "Posición inválida o lista vacia");
+                    lista.mostrar();
                     break;
                 case 8:
-                    lista.mostrarAdelante();
+                    System.out.println(lista.eliminarUltimo() ? "Ultimo elemento eliminado" : "Lista vacia");
+                    lista.mostrar();
                     break;
                 case 9:
-                    lista.mostrarAtras();
+                    lista.mostrar();
                     break;
                 case 10:
-                    System.out.println("Tamaño: " + lista.tamanio);
+                    System.out.println("Tamanio: " + lista.getTamanio());
                     break;
                 case 0:
                     System.out.println("Hasta luego");
                     break;
                 default:
-                    System.out.println("Opción inválida");
+                    System.out.println("Opcion invalida");
             }
         } while (opcion != 0);
 
